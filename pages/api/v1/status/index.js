@@ -1,7 +1,6 @@
 import database from "infra/database.js";
-import { DatabaseError } from "pg";
 
-async function status(request, response) {
+export default async function status(request, response) {
   const updatedAt = new Date().toISOString();
 
   const databaseVersionResult = await database.query("SHOW server_version;");
@@ -32,5 +31,3 @@ async function status(request, response) {
     },
   });
 }
-
-export default status;
